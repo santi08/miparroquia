@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiParroquia.API", "MiParroquia.API\MiParroquia.API.csproj", "{DEDAC9C6-358F-4E15-AD46-FFD5ECB777F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DEDAC9C6-358F-4E15-AD46-FFD5ECB777F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEDAC9C6-358F-4E15-AD46-FFD5ECB777F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEDAC9C6-358F-4E15-AD46-FFD5ECB777F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEDAC9C6-358F-4E15-AD46-FFD5ECB777F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {087E80E9-270C-4323-BDF0-AE5BB7EFBA17}
+	EndGlobalSection
+EndGlobal
