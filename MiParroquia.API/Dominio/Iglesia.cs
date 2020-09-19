@@ -12,7 +12,7 @@ namespace MiParroquia.API.Dominio
         public string Direccion { get; set; }
         public string Telefono { get; set; }
         public string Correo { get; set; }
-        public Guid ParrocoId { get; set; }
+        public string ParrocoId { get; set; }
 
         public Usuario Parroco { get; set; }
         public ICollection<Horario> Horarios { get; set; }

@@ -9,7 +9,7 @@ namespace MiParroquia.API.Dominio
     {
         public Guid ReservaId { get; set; }
         public Guid HorarioId { get; set; }
-        public Guid UsuarioId { get; set; }
+        public string UsuarioId { get; set; }
         public DateTime Fecha { get; set; }
         public string Estado { get; set; }
 

@@ -8,7 +8,7 @@ namespace MiParroquia.API.Dominio
     public class UsuarioInvitado
     {
         public Guid UsuarioInvitadoId { get; set; }
-        public Guid UsuarioId { get; set; }
+        public string UsuarioId { get; set; }
         public string PrimerNombre { get; set; }
         public string SegundoNombre { get; set; }
         public string PrimerApellido { get; set; }
