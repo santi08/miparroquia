@@ -11,7 +11,8 @@ namespace MiParroquia.API.Aplicacion.Iglesias.Dtos
     {
         public MappingProfile()
         {
-            CreateMap<Iglesia, IglesiaListDto>();
+            CreateMap<Iglesia, IglesiaListDto>()
+                .ForMember(x => x.Parroco, opt => opt.MapFrom(i => $"{i.Parroco.PrimerNombre} {i.Parroco.PrimerApellido}"));
         }
     }
 }

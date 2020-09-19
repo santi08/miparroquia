@@ -56,8 +56,8 @@ namespace MiParroquia.API.Aplicacion.Iglesias
                 {
                     Items = iglesias,
                     TotalItems = queryable.Count(),
-                    PageNumber = request.PageNumber.Value,
-                    PageSize = request.PageSize.Value
+                    PageNumber = request.PageNumber?? 1,
+                    PageSize = request.PageSize?? 5
 
                 };
             }
