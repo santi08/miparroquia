@@ -32,9 +32,9 @@ namespace MiParroquia.API.Controllers
         }
 
         [HttpPut("{horarioId}/reservas/{idReserva}")]
-        public async Task<IActionResult> UpdateReserva(Guid horarioId, Guid idReserva)
+        public async Task<ReservaDto> UpdateReserva(Guid horarioId, Guid idReserva, UpdateReserva.Command command)
         {
-            return Ok();
+            return await Mediator.Send(command);
         }
     }
 }

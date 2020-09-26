@@ -46,9 +46,9 @@ namespace MiParroquia.API.Controllers
 
         [HttpPut("{idIglesia}/horarios/{idHorario}")]
 
-        public async Task<IActionResult> UpdateHorario(Guid iglesiaId, Guid idHorario)
+        public async Task<HorarioDto> UpdateHorario(Guid iglesiaId, Guid idHorario, UpdateHorario.Command command)
         {
-            return Ok();
+            return await Mediator.Send(command);
         }
     }
 }

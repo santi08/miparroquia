@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MiParroquia.API.Aplicacion.Horarios.Dtos
 {
-    public class MappingProfile: Profile
+    public class MappingProfile : Profile
     {
         public MappingProfile()
         {
@@ -29,6 +29,17 @@ namespace MiParroquia.API.Aplicacion.Horarios.Dtos
                 .ForMember(x => x.SegundoApellido, opt => opt.MapFrom(i => i.UsuarioInvitado.SegundoApellido))
                 .ForMember(x => x.TipoIdentificacion, opt => opt.MapFrom(i => i.UsuarioInvitado.TipoIdentificacion))
                 .ForMember(x => x.Identificación, opt => opt.MapFrom(i => i.UsuarioInvitado.Identificación))
+                .ForMember(x => x.Invitado, opt => opt.MapFrom(i => true));
+
+
+            CreateMap<Reserva, ReservaDto>()
+                .ForMember(x => x.ReservaId, opt => opt.MapFrom(i => i.ReservaId))
+                .ForMember(x => x.Estado, opt => opt.MapFrom(i => i.Estado))
+                .ForMember(x => x.Invitado, opt => opt.MapFrom(i => false));
+
+            CreateMap<ReservaInvitado, ReservaDto>()
+                .ForMember(x => x.ReservaId, opt => opt.MapFrom(i => i.ReservaInvitadoId))
+                .ForMember(x => x.Estado, opt => opt.MapFrom(i => i.Estado))
                 .ForMember(x => x.Invitado, opt => opt.MapFrom(i => true));
 
         }

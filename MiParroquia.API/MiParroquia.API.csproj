@@ -18,9 +18,5 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Aplicacion\Horarios\Dtos\" />
-  </ItemGroup>
-
 
 </Project>
