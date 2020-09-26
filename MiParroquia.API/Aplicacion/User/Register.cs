@@ -26,7 +26,7 @@ namespace MiParroquia.API.Application.User
             public string PrimerApellido { get; set; }
             public string SegundoApellido { get; set; }
             public string TipoIdentificacion { get; set; }
-            public string Identificación { get; set; }
+            public string Identificacion { get; set; }
             public DateTime FechaNacimiento { get; set; }
             public string Direccion { get; set; }
             public string Telefono { get; set; }
@@ -34,6 +34,7 @@ namespace MiParroquia.API.Application.User
             public string EstadoCivil { get; set; }
             public string UserName { get; set; }
             public string Email { get; set; }
+            public string Password { get; set; }
         }
 
         public class CommandValidator : AbstractValidator<Command>
@@ -42,10 +43,11 @@ namespace MiParroquia.API.Application.User
             {
                 RuleFor(x => x.PrimerNombre).NotEmpty();
                 RuleFor(x => x.PrimerApellido).NotEmpty();
-                RuleFor(x => x.Identificación).NotEmpty();
+                RuleFor(x => x.Identificacion).NotEmpty();
                 RuleFor(x => x.FechaNacimiento).NotEmpty();
                 RuleFor(x => x.UserName).NotEmpty();
                 RuleFor(x => x.Email).NotEmpty().EmailAddress();
+                RuleFor(x => x.Password).NotEmpty();
                 
             }
         }
@@ -79,18 +81,17 @@ namespace MiParroquia.API.Application.User
                     PrimerApellido = request.PrimerApellido,
                     SegundoApellido = request.SegundoApellido,
                     TipoIdentificacion = request.TipoIdentificacion,
-                    Identificación = request.Identificación,
+                    Identificación = request.Identificacion,
                     Direccion = request.Direccion,
                     Telefono = request.Telefono,
                     Genero = request.Genero,
                     EstadoCivil = request.EstadoCivil,
                     FechaNacimiento = request.FechaNacimiento,
                     Email = request.Email,
-                    UserName = request.UserName
+                    UserName = request.Identificacion
                 };
 
-                //var result = await _userManager.CreateAsync(user, request.Password);
-                var result = await _userManager.CreateAsync(user, "Pa$$w0rd");
+                var result = await _userManager.CreateAsync(user, request.Password);
                 if (result.Succeeded)
                 {
                     return new UserLogin

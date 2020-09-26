@@ -54,7 +54,7 @@ namespace MiParroquia.API.Aplicacion.Iglesias
 
                 horario.Hora = request.Hora;
                 horario.Capacidad = request.Capacidad;
-                horario.Transmision = request.Transmision
+                horario.Transmision = request.Transmision;
 
                 _context.Horarios.Update(horario);
 

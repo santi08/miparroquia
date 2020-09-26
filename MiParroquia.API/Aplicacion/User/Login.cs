@@ -21,7 +21,7 @@ namespace MiParroquia.API.Application.User
     {
         public class Query : IRequest<UserLogin>
         {
-            public string Email { get; set; }
+            public string Identificacion { get; set; }
             public string Password { get; set; }
         }
 
@@ -30,7 +30,7 @@ namespace MiParroquia.API.Application.User
 
             public QueryValidator()
             {
-                RuleFor(x => x.Email).NotEmpty();
+                RuleFor(x => x.Identificacion).NotEmpty();
                 RuleFor(x => x.Password).NotEmpty();
             }
         }
@@ -52,7 +52,7 @@ namespace MiParroquia.API.Application.User
 
             public async Task<UserLogin> Handle(Query request, CancellationToken cancellationToken)
             {
-                var user = await _userManager.FindByEmailAsync(request.Email);
+                var user = await _context.Users.FirstOrDefaultAsync(x => x.Identificación == request.Identificacion);
 
                 if (user == null)
                     throw new RestException(HttpStatusCode.Unauthorized);
@@ -61,11 +61,6 @@ namespace MiParroquia.API.Application.User
 
                 if (result.Succeeded)
                 {
-                    //var perfilesUsuario = await _context.UsuariosPerfiles.Include(p => p.Perfil.OpcionesPerfil)
-                    //                                                     .ThenInclude(o => o.Opcion)
-                    //                                                     .Where(u => u.UsuarioId == user.Id).ToListAsync();
-                    //user.PerfilesUsuario = perfilesUsuario;
-
                     return new UserLogin
                     {
                         UserName = user.UserName,
