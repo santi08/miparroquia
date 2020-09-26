@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MiParroquia.API.Aplicacion.Extensions;
+using MiParroquia.API.Aplicacion.Horarios;
+using MiParroquia.API.Aplicacion.Horarios.Dtos;
 using MiParroquia.API.Persistencia;
 using System;
 using System.Collections.Generic;
@@ -16,38 +19,20 @@ namespace MiParroquia.API.Controllers
             _context = context;
         }
 
-        [HttpPost("{idHorario}/reservas")]
-        public async Task<IActionResult> CreateReserva(Guid idHorario)
+        [HttpPost("{horarioId}/reservas")]
+        public async Task<ReservaListDto> CreateReserva(Guid horarioId, CreateReserva.Command command)
         {
-            return Ok();
+            return await Mediator.Send(command);
         }
 
-        [HttpGet("{id}/reservas")]
-        public async Task<IActionResult> ListReservas(Guid idHorario, [FromQuery] int? pageSize, [FromQuery] int? pageNumber)
+        [HttpGet("{horarioId}/reservas")]
+        public async Task<PagedList<ReservaListDto>> ListReservas(Guid horarioId, [FromQuery] int? pageSize, [FromQuery] int? pageNumber)
         {
-            return Ok();
+            return await Mediator.Send(new ListReservas.Query(horarioId, pageSize, pageNumber));
         }
 
-        [HttpPut("{id}/reservas/{idReserva}")]
-        public async Task<IActionResult> UpdateReserva(Guid idHorario, Guid idReserva)
-        {
-            return Ok();
-        }
-
-        [HttpPost("{idHorario}/reservas-invitados")]
-        public async Task<IActionResult> CreateReservaInvitado(Guid idHorario)
-        {
-            return Ok();
-        }
-
-        [HttpGet("{id}/reservas-invitados")]
-        public async Task<IActionResult> ListReservasInvitados(Guid idHorario, [FromQuery] int? pageSize, [FromQuery] int? pageNumber)
-        {
-            return Ok();
-        }
-
-        [HttpPut("{id}/reservas-invitados/{idReserva}")]
-        public async Task<IActionResult> UpdateReservaInvitado(Guid idHorario, Guid idReserva)
+        [HttpPut("{horarioId}/reservas/{idReserva}")]
+        public async Task<IActionResult> UpdateReserva(Guid horarioId, Guid idReserva)
         {
             return Ok();
         }

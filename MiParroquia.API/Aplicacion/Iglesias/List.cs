@@ -15,9 +15,7 @@ using MiParroquia.API.Persistencia;
 
 namespace MiParroquia.API.Aplicacion.Iglesias
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class List : ControllerBase
+    public class List
     {
         public class Query : IRequest<PagedList<IglesiaListDto>>
         {

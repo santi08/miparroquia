@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -30,20 +31,22 @@ namespace MiParroquia.API.Controllers
             return await Mediator.Send(new List.Query(pageSize, pageNumber));
         }
 
-        [HttpPost("{idIglesia}/horarios")]
-        public async Task<IActionResult> CreateHorario(Guid idIglesia)
+        [HttpPost("{iglesiaId}/horarios")]
+        public async Task<HorarioDto> CreateHorario(Guid iglesiaId, CreateHorario.Command command)
         {
-            return Ok();
+            command.IglesiaId = iglesiaId;
+            return await Mediator.Send(command);
         }
 
-        [HttpGet("{idIglesia}/horarios")]
-        public async Task<IActionResult> ListHorarios(Guid idIglesia, [FromQuery] int? pageSize, [FromQuery] int? pageNumber)
+        [HttpGet("{iglesiaId}/horarios")]
+        public async Task<PagedList<HorarioListDto>> ListHorarios(Guid iglesiaId, [FromQuery] int? pageSize, [FromQuery] int? pageNumber)
         {
-            return Ok();
+            return await Mediator.Send(new ListHorarios.Query(iglesiaId, pageSize, pageNumber));
         }
 
         [HttpPut("{idIglesia}/horarios/{idHorario}")]
-        public async Task<IActionResult> UpdateHorario(Guid idIglesia, Guid idHorario)
+
+        public async Task<IActionResult> UpdateHorario(Guid iglesiaId, Guid idHorario)
         {
             return Ok();
         }
